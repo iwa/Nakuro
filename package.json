@@ -1,7 +1,7 @@
 {
   "name": "nakuro",
   "version": "1.0.0",
-  "description": "Image Generation API for Q-Bot",
+  "description": "Personnal REST API",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
