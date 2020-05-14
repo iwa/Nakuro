@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.get('/api/:app', async function(req, res) {
+app.get('/app/:app', async function(req, res) {
     let pid = shell.exec(`pm2 pid ${req.params.app}`, {silent: true});
     if(pid.stdout == '0' || pid.stdout == '\n' || pid.stdout.startsWith("[PM2]"))
         return res.sendStatus(404)
