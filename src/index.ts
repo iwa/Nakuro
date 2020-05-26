@@ -15,6 +15,14 @@ app.get('/app/:app', async function(req, res) {
         return res.sendStatus(200)
 });
 
+app.post('/update/:app', async (req, res) => {
+    if(req.params.app == 'qbot') {
+        res.sendStatus(200)
+        return shell.exec(`pm2 stop qbot && cd ../q-bot && yarn update && pm2 start qbot`, {silent: true});
+    } else
+        return res.sendStatus(404)
+});
+
 app.use((req, res) => {
     res.sendStatus(404);
 });
