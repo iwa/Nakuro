@@ -8,11 +8,10 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.get('/app/:app', async function(req, res) {
-    let pid = shell.exec(`pm2 pid ${req.params.app}`, {silent: true});
-    if(pid.stdout == '0' || pid.stdout == '\n' || pid.stdout.startsWith("[PM2]"))
+    let pid = shell.cat(`${process.env.HOME}/.pm2/pids/${req.params.app}*.pid`);
+    if(pid.stderr)
         return res.sendStatus(404)
-    else
-        return res.sendStatus(200)
+    return res.sendStatus(200)
 });
 
 app.post('/update/:app', async (req, res) => {
