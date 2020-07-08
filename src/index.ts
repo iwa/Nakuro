@@ -24,7 +24,7 @@ app.post('/update/:app', async (req, res) => {
         return res.sendStatus(403);
     let GHKey = req.header('X-Hub-Signature');
     let body = JSON.stringify(req.body)
-    let hash = crypto.createHmac('sha1', key).update(body).digest('hex')
+    let hash = `sha1=${crypto.createHmac('sha1', key).update(body).digest('hex')}`
     if(GHKey === hash) {
         let action = req.body.action
         if(action === 'released') {
