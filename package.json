@@ -4,7 +4,7 @@
   "description": "Personnal REST API",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update": "git fetch origin master && git pull origin master && rm -rf build/ && yarn && tsc"
   },
   "repository": {
     "type": "git",
